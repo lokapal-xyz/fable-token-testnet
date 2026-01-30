@@ -18,7 +18,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "fable_token": ["./packages/fable_token/src/index.ts"]
+    }
   },
-  "include": ["src"]
+  "include": ["src", "packages/fable_token/src"]
 }

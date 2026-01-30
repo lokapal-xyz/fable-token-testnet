@@ -10,7 +10,7 @@ import { rpc as StellarRpc } from "@stellar/stellar-sdk";
 // Split the fable into three parts with proper line breaks
 const STORY_PARTS = [
   `A silly young cricket, accustomed to sing
-Through the warm, sunny months of gay summer and spring,
+Through the warm, sunny months of bright summer and spring,
 Began to complain when he found that, at home,
 His cupboard was empty, and winter was come.
 Not a crumb to be found
@@ -35,7 +35,7 @@ But tell me, dear cricket, did you lay nothing by
 When the weather was warm?" Quoth the cricket, "Not I!
 My heart was so light
 That I sang day and night,
-For all nature looked gay."
+For all nature gave way."
 "You sang, sir, you say?
 Go then," says the ant, "and dance winter away."`,
 ];
@@ -423,7 +423,7 @@ export default function Home() {
             <span className={styles.titleWord}>Cricket</span>
           </Heading>
           <Text as="p" size="lg" className={styles.subtitle}>
-            An Interactive Fable on Stellar
+            An Interactive Fable • Learn Web3 Through Literature
           </Text>
         </header>
 
@@ -701,6 +701,18 @@ export default function Home() {
         )}
 
         <footer className={styles.footer}>
+          <div className={styles.decorativeLine} />
+          <div className={styles.footerContent}>
+            <Text as="p" size="sm" className={styles.footerTitle}>
+              <strong>About This Project</strong>
+            </Text>
+            <Text as="p" size="sm" className={styles.footerDescription}>
+              An educational DApp introducing students (ages 8-11) to Web3
+              concepts through classic literature. By reading Aesop's fable,
+              students learn about blockchain wallets, transactions, and digital
+              tokens in a safe, engaging way.
+            </Text>
+          </div>
           <div className={styles.decorativeLine} />
           <Text as="p" size="sm">
             Built on Stellar • Powered by Scaffold

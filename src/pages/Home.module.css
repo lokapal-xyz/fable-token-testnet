@@ -379,9 +379,25 @@
 
 /* Footer */
 .footer {
-  margin-top: 1rem;
+  margin-top: 4rem;
   padding: 2rem 0;
   text-align: center;
+}
+
+.footerContent {
+  max-width: 600px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+}
+
+.footerTitle {
+  color: #3a2f23;
+  margin-bottom: 0.5rem;
+}
+
+.footerDescription {
+  color: #6b5b4a;
+  line-height: 1.6;
 }
 
 .decorativeLine {

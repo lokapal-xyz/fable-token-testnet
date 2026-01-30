@@ -2,11 +2,26 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import wasm from "vite-plugin-wasm";
 import { nodePolyfills } from "vite-plugin-node-polyfills";
-import fs from "fs"; // ← Add this
-import path from "path"; // ← Add this
+import fs from "fs";
+import path from "path";
 
-// https://vite.dev/config/
 export default defineConfig(() => {
+  // Check if we are running on Vercel or in a CI environment
+  const isVercel = process.env.VERCEL === "1";
+
+  // Only try to read certs if we are NOT on Vercel
+  const httpsConfig =
+    !isVercel && fs.existsSync(path.resolve(__dirname, ".cert/localhost+2.pem"))
+      ? {
+          key: fs.readFileSync(
+            path.resolve(__dirname, ".cert/localhost+2-key.pem"),
+          ),
+          cert: fs.readFileSync(
+            path.resolve(__dirname, ".cert/localhost+2.pem"),
+          ),
+        }
+      : undefined;
+
   return {
     plugins: [
       react(),
@@ -29,12 +44,7 @@ export default defineConfig(() => {
     },
     envPrefix: "PUBLIC_",
     server: {
-      https: {
-        key: fs.readFileSync(
-          path.resolve(__dirname, ".cert/localhost+2-key.pem"),
-        ), // Adjust filename if different
-        cert: fs.readFileSync(path.resolve(__dirname, ".cert/localhost+2.pem")), // Adjust filename if different
-      },
+      https: httpsConfig, // Use the dynamic config here
       proxy: {
         "/friendbot": {
           target: "http://localhost:8000/friendbot",

@@ -1,0 +1,539 @@
+/* Container and Layout */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f1e8 0%, #e8dcc4 100%);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.grainOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  padding-top: 4rem; /* Space for notifications */
+}
+
+/* Custom Header */
+.customHeader {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(139, 115, 85, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Ensure notifications appear above header */
+:global(.notification-container) {
+  z-index: 9999 !important;
+}
+
+.headerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logoSection {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+  color: #8b7355;
+}
+
+.logoText {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #5a4a3a;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica",
+    "Arial", sans-serif;
+}
+
+/* Header Section */
+.header {
+  text-align: center;
+  margin: 3rem 0;
+  padding: 2rem 0;
+  border-bottom: 2px solid #8b7355;
+  border-top: 2px solid #8b7355;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.8s ease-out;
+}
+
+.title {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica",
+    "Arial", sans-serif;
+  color: #3a2f23;
+  letter-spacing: 0.02em;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-weight: 700;
+}
+
+.titleWord {
+  display: inline-block;
+  animation: slideDown 0.6s ease-out backwards;
+}
+
+.titleWord:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.titleWord:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.titleWord:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.titleWord:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.titleWord:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.subtitle {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica",
+    "Arial", sans-serif;
+  color: #6b5b4a;
+  font-style: italic;
+  font-weight: 400;
+  animation: fadeIn 1s ease-out 0.6s backwards;
+}
+
+/* Card Styles */
+.card {
+  margin: 2rem 0;
+}
+
+.cardContent {
+  padding: 2.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.cardContent h2 {
+  font-weight: 700;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica",
+    "Arial", sans-serif;
+}
+
+.cardContent p {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica",
+    "Arial", sans-serif;
+}
+
+.iconContainer {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #a89077 0%, #8b7355 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.iconContainer svg {
+  width: 40px;
+  height: 40px;
+}
+
+.completeIcon {
+  background: linear-gradient(135deg, #6b9b6e 0%, #5a8a5e 100%);
+}
+
+.successIcon {
+  background: linear-gradient(135deg, #7cb342 0%, #558b2f 100%);
+}
+
+.note {
+  color: #6b5b4a;
+  opacity: 0.8;
+}
+
+/* Story Card */
+.storyCard {
+  margin: 2rem 0;
+  min-height: 400px;
+}
+
+.storyContent {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.partIndicator {
+  text-align: center;
+  color: #8b7355;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+}
+
+.storyText {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica",
+    "Arial", sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #3a2f23;
+  text-align: left;
+  white-space: pre-line;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  border-left: 4px solid #8b7355;
+  animation: fadeIn 0.6s ease-out;
+  font-weight: 400;
+}
+
+.storyNav {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+/* NFT Details */
+.nftImageContainer {
+  width: 100%;
+  max-width: 300px;
+  margin: 1rem auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(139, 115, 85, 0.3);
+  animation: scale 0.6s ease-out;
+}
+
+.nftImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.nftImageContainer:hover .nftImage {
+  transform: scale(1.05);
+}
+
+.nftDetails {
+  width: 100%;
+  background: rgba(139, 115, 85, 0.05);
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.detailRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.detailLabel {
+  font-weight: 600;
+  color: #5a4a3a;
+}
+
+.detailValue {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid rgba(139, 115, 85, 0.2);
+}
+
+.addressCode {
+  font-family: "Monaco", "Courier New", monospace;
+  font-size: 0.875rem;
+  color: #3a2f23;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.copyButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  color: #8b7355;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.copyButton:hover {
+  background: rgba(139, 115, 85, 0.1);
+  color: #5a4a3a;
+}
+
+.copyButton svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Buttons */
+.primaryButton {
+  min-width: 200px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  padding: 1rem 2rem !important;
+  border-radius: 12px !important;
+  background: linear-gradient(135deg, #8b7355 0%, #6b5745 100%) !important;
+  border: none !important;
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(139, 115, 85, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica",
+    "Arial", sans-serif;
+}
+
+.primaryButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 115, 85, 0.4);
+  background: linear-gradient(135deg, #9d8465 0%, #7b6755 100%) !important;
+}
+
+.primaryButton:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(139, 115, 85, 0.3);
+}
+
+.primaryButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.nextButton {
+  min-width: 150px;
+  font-size: 1rem;
+  padding: 0.875rem 1.75rem !important;
+  border-radius: 10px !important;
+  background: white !important;
+  border: 2px solid #8b7355 !important;
+  color: #5a4a3a !important;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica",
+    "Arial", sans-serif;
+}
+
+.nextButton:hover:not(:disabled) {
+  transform: translateX(4px);
+  background: #8b7355 !important;
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(139, 115, 85, 0.3);
+}
+
+/* Footer */
+.footer {
+  margin-top: 1rem;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.decorativeLine {
+  height: 2px;
+  background: linear-gradient(to right, transparent, #8b7355, transparent);
+  margin-bottom: 1rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.slideIn {
+  animation: slideIn 0.6s ease-out;
+}
+
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.bounce {
+  animation: bounce 1s ease-in-out 2;
+}
+
+.scale {
+  animation: scale 0.5s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .content {
+    padding: 1rem;
+  }
+
+  .header {
+    margin: 2rem 0;
+    padding: 1.5rem 1rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .cardContent {
+    padding: 1.5rem;
+  }
+
+  .storyContent {
+    padding: 1.5rem;
+  }
+
+  .storyText {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  .iconContainer {
+    width: 60px;
+    height: 60px;
+  }
+
+  .iconContainer svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .primaryButton {
+    min-width: 100%;
+    font-size: 1rem;
+  }
+
+  .headerContent {
+    padding: 0.75rem 1rem;
+  }
+
+  .logoText {
+    font-size: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

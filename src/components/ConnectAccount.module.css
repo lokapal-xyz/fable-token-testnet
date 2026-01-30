@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  vertical-align: middle;
+  flex-wrap: wrap;
+}
+
+/* Mobile styles - stack vertically on small screens */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    width: 100%;
+  }
+
+  /* Make all child elements full width on mobile */
+  .container > * {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Very small mobile screens */
+@media (max-width: 480px) {
+  .container {
+    gap: 6px;
+  }
+}

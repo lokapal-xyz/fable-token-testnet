@@ -17,6 +17,7 @@
     "packages/*"
   ],
   "dependencies": {
+    "fable_token": "*",
     "@creit.tech/stellar-wallets-kit": "^1.9.5",
     "@stellar/design-system": "^3.2.5",
     "@stellar/stellar-sdk": "^14.3.3",

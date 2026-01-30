@@ -1,4 +1,10 @@
 {
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "fable_token": ["packages/fable_token/src/index.ts"]
+    }
+  },
   "files": [],
   "exclude": ["packages"],
   "references": [
